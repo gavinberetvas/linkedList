@@ -40,39 +40,45 @@ class LinkedList {
   }
 
   size() {
-    // returns the total number of nodes in the list
-    // recursively search through nested object and count++ on each nest
+    if (this.head != null) {
+      let counter = 1;
+      let current = this.head;
 
-    // head: {
-    //         value: 6
-    //         next: {
-    //             value: 10
-    //             next: {
-    //                 value: 12
-    //                 next: {
-    //                     value: 3
-    //                     next: null
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
+      while (current.nextNode != null) {
+        current = current.nextNode;
+        counter++;
+      }
 
+      console.log("total items in list", counter)
+      return counter
+    } else {
+      return 0
+    }
   }
 
   getHead() {
     //returns first node in list
     if (this.head != null) {
-    console.log("test", this.head)
-    return this.head
+      console.log("test", this.head);
+      return this.head;
     } else {
-      return 1
+      return 1;
     }
   }
 
   getTail() {
     //returns last node in list
+    if (this.head != null) {
+      let current = this.head;
+
+      while (current.nextNode != null) {
+        current = current.nextNode;
+      }
+
+      let lastItem = current
+      console.log("tail of list:", lastItem)
+      return lastItem
+    }
   }
 
   at(index) {
@@ -111,7 +117,11 @@ list.append("string2");
 list.append("string3");
 console.log("old", list);
 list.prepend("string4");
+list.append("string5");
+list.append("string6");
+list.getTail()
+list.append("string7");
+list.getTail()
 console.log("new with prepend", list);
-
-
-list.getHead()
+list.size()
+list.getHead();
