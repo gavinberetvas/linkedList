@@ -1,29 +1,77 @@
-// import { Node } from "./nodeClass";
+class Node {
+  constructor(value, nextNode) {
+    this.value = null || value;
+    this.nextNode = null;
+  }
+}
 
 class LinkedList {
   constructor() {
     this.head = null;
   }
-  
+
   append(value) {
     //adds a new node containing value to the end of the list
+    let object = new Node(value);
+
+    if (this.head == null) {
+      this.head = object;
+    } else {
+      let current = this.head;
+
+      while (current.nextNode != null) {
+        current = current.nextNode;
+      }
+
+      current.nextNode = object;
+    }
   }
 
   prepend(value) {
     // adds a new node containing value to the start of the list
-    //presumably within the head object.
+    let object = new Node(value);
+
+    if (this.head == null) {
+      this.head = object;
+    }
+
+    object.nextNode = this.head;
+    this.head = object;
   }
 
   size() {
     // returns the total number of nodes in the list
     // recursively search through nested object and count++ on each nest
+
+    // head: {
+    //         value: 6
+    //         next: {
+    //             value: 10
+    //             next: {
+    //                 value: 12
+    //                 next: {
+    //                     value: 3
+    //                     next: null
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
+
   }
 
-  head() {
+  getHead() {
     //returns first node in list
+    if (this.head != null) {
+    console.log("test", this.head)
+    return this.head
+    } else {
+      return 1
+    }
   }
 
-  tail() {
+  getTail() {
     //returns last node in list
   }
 
@@ -58,4 +106,12 @@ class LinkedList {
 }
 
 let list = new LinkedList();
-console.log(list);
+list.append("string");
+list.append("string2");
+list.append("string3");
+console.log("old", list);
+list.prepend("string4");
+console.log("new with prepend", list);
+
+
+list.getHead()
