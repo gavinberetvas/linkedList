@@ -6,6 +6,7 @@ export class Node {
 }
 
 //sample list
+
 // const list = {
 //     head: {
 //         value: 6

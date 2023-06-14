@@ -1,6 +1,10 @@
-import { Node } from "./nodeClass";
+// import { Node } from "./nodeClass";
 
 class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  
   append(value) {
     //adds a new node containing value to the end of the list
   }
@@ -40,7 +44,7 @@ class LinkedList {
   }
 
   toString() {
-    // represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: 
+    // represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be:
     // ( value ) -> ( value ) -> ( value ) -> null
   }
 
@@ -52,3 +56,6 @@ class LinkedList {
     //that removes the node at the given index.
   }
 }
+
+let list = new LinkedList();
+console.log(list);
