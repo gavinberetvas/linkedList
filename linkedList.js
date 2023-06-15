@@ -160,16 +160,14 @@ class LinkedList {
 
   removeAt(index) {
     let previousNode = null;
-    let remainingList = null;
     let current = this.head;
-    let counter = 1;
 
     if (index == 1) {
       this.head = current.nextNode;
       return this.toString();
     }
 
-    for (let i = 1; i < index; i++) {
+    for (let i = 0; i < index; i++) {
       previousNode = current;
       current = current.nextNode;
       if (current == null) {
@@ -178,7 +176,6 @@ class LinkedList {
       }
     }
     previousNode.nextNode = current.nextNode;
-
     console.log("remove at", this.toString());
     return this.toString;
 
@@ -231,7 +228,7 @@ list.find("string5");
 list.contains("string8"); //false
 list.toString();
 console.log("delete test");
-list.removeAt(7);
+list.removeAt(1);
 // list.removeAt(3)
 // list.removeAt(2)
 // list.removeAt(2)
