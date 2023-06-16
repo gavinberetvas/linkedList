@@ -122,6 +122,7 @@ class LinkedList {
   }
 
   find(value) {
+    
     let current = this.head;
     let counter = 1;
 
@@ -139,10 +140,12 @@ class LinkedList {
   }
 
   toString() {
+    console.log(JSON.stringify(this))
+
     let current = this.head;
     let stringedList = "";
 
-    while (current.nextNode != null) {
+    while (current != null) {
       console.log(` ${current.value} ---> `);
       stringedList += `${current.value} ---> `;
       current = current.nextNode;
@@ -155,55 +158,47 @@ class LinkedList {
   }
 
   insertAt(value, index) {
-    //that inserts a new node with the provided value at the given index.
+    if (this.head == null) {
+      this.prepend(value);
+      return this.toString();
+    } else {
+      let previousNode = null;
+      let object = new Node(value);
+      let current = this.head;
+      for (let i = 0; i < index; i++) {
+        previousNode = current;
+        current = current.nextNode;
+      }
+      previousNode.nextNode = object;
+      object.nextNode = current;
+      return this.toString();
+    }
   }
 
   removeAt(index) {
-    let previousNode = null;
-    let current = this.head;
-
     if (index == 1) {
       this.head = current.nextNode;
       return this.toString();
     }
 
+    let previousNode = null;
+    let current = this.head;
+
     for (let i = 0; i < index; i++) {
       previousNode = current;
       current = current.nextNode;
       if (current == null) {
-        console.log("error. Item not found")
-        return "error. Item not found"
+        console.log("error. Item not found");
+        return "error. Item not found";
       }
     }
     previousNode.nextNode = current.nextNode;
     console.log("remove at", this.toString());
     return this.toString;
-
-    // if (this.head == null) {
-    //   return "empty list"
-    // }
-
-    // if (index == 1) {
-    //   this.head = current.nextNode
-    //   return this.toString();
-    // }
-
-    // while (current.nextNode != null) {
-    //   counter++;
-    //   previousNode = current;
-    //   current = current.nextNode;
-    //   if (counter == index) {
-    //     // console.log(`index to delete of ${value}:`, counter);
-    //     remainingList = current.nextNode
-    //     previousNode.nextNode = remainingList;
-    //     return this.toString();
-    //   }
-    // }
-    // console.log("not found");
-    // return "not found";
   }
 }
 
+//beta test 
 let list = new LinkedList();
 list.append("string");
 list.append("string2");
@@ -228,7 +223,7 @@ list.find("string5");
 list.contains("string8"); //false
 list.toString();
 console.log("delete test");
-list.removeAt(1);
+list.insertAt("newstring", 2);
 // list.removeAt(3)
 // list.removeAt(2)
 // list.removeAt(2)
